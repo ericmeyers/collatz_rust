@@ -103,6 +103,7 @@ version = "0.1.0"
 dependencies = [
  "itertools",
  "plotly",
+ "plotpy",
 ]
 
 [[package]]
@@ -459,6 +460,15 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn",
+]
+
+[[package]]
+name = "plotpy"
+version = "1.10.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "66b016cb6faa0f88066c42c0789445ff7d002e6330cb336ab8dac0f8bbe04627"
+dependencies = [
+ "num-traits",
 ]
 
 [[package]]
