@@ -1,35 +1,10 @@
-use itertools::iterate;
-use itertools::Itertools;
 
 use plotpy::{Curve, Plot, StrError};
 
-fn collatz_next(n: &i64) -> i64 {
-    if n % 2 == 0 {
-        n / 2
-    } else {
-        3 * n + 1
-    }
-}
-
-fn collatz_length(n: &i64) -> i64 {
-    let v: Vec<_> = iterate(*n, collatz_next)
-        .take_while_inclusive(|&n| n > 1)
-        .collect();
-    v.len() as i64
-}
-
-fn collatz_length_brian(n: i64) -> i64 {
-    if n == 1 {
-        1
-    } else if n % 2 == 0 {
-        1 + collatz_length_brian(n / 2)
-    } else {
-        1 + collatz_length_brian(3 * n + 1)
-    }
-}
+use collatz_rust::collatz_length_brian;
 
 fn main() -> Result<(), StrError> {
-    let xs: Vec<i64> = (1..=5000000).collect();
+    let xs: Vec<i64> = (1..=50000).collect();
     //let ys:Vec<_> = xs.iter().map(collatz_length).collect();
     let ys: Vec<_> = xs.iter().map(|&n| collatz_length_brian(n)).collect();
 
