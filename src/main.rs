@@ -4,10 +4,10 @@ use plotpy::{Curve, Plot, StrError};
 use collatz_rust::collatz_length_brian;
 
 fn main() -> Result<(), StrError> {
-    let xs: Vec<i64> = (1..=50000).collect();
+    let xs: Vec<i64> = (1..=5000000).collect();
     //let ys:Vec<_> = xs.iter().map(collatz_length).collect();
     let ys: Vec<_> = xs.iter().map(|&n| collatz_length_brian(n)).collect();
-
+/*
     let mut curve = Curve::new();
     curve
         .set_label("MatPlotLib Test")
@@ -25,6 +25,6 @@ fn main() -> Result<(), StrError> {
     let mut plot = Plot::new();
     plot.add(&curve);
     let _ = plot.show("myplot");
-
+*/
     Ok(())
 }
