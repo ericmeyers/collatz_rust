@@ -33,6 +33,7 @@ fn main() -> Result<(), StrError> {
     curve.draw(&xs, &ys);
     let mut plot = Plot::new();
     plot.add(&curve);
+    plot.grid_and_labels("Starting Integer", "Sequence Length");
     let _ = plot.show("myplot");
     Ok(())
 }
