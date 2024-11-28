@@ -34,6 +34,7 @@ fn main() -> Result<(), StrError> {
     let mut plot = Plot::new();
     plot.add(&curve);
     plot.grid_and_labels("Starting Integer", "Sequence Length");
+    plot.set_title("Collatz Sequence Length");
     let _ = plot.show("myplot");
     Ok(())
 }
