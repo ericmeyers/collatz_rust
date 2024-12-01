@@ -18,7 +18,7 @@ pub fn collatz_length(n: &i64) -> i64 {
     v.len() as i64
 }
 
-pub fn collatz_length_brian(n: i64) -> i64 {
+pub fn collatz_length_brian(n: i64) -> i32 {
     if n <= 1 {
         // just in case some hack asks for collatz_length(0)
         1
