@@ -1,40 +1,31 @@
-
-use plotpy::{Curve, Plot, StrError};
-
 use collatz_rust::collatz_length_brian;
-use rayon::prelude::*;
-use std::time::Instant;
+use plotters::prelude::*;
+
+fn main()  {
+
+  let high = 1000000000;
+
+  let xs: Vec<i32> = (1..=high).collect();
+  let points = xs.into_iter().map(|n| {let y = collatz_length_brian(n as i64); (n,y)});
+  let root_area = BitMapBackend::new("myplot.png", (1200, 800))
+    .into_drawing_area();
+
+  root_area.fill(&WHITE).unwrap();
+
+
+  let mut ctx = ChartBuilder::on(&root_area)
+    .set_label_area_size(LabelAreaPosition::Left, 40)
+    .set_label_area_size(LabelAreaPosition::Bottom, 40)
+    .caption("Plotters Rust", ("sans-serif", 40))
+    .build_cartesian_2d(1..high, 0..700)
+    .unwrap();
+
+  ctx.configure_mesh().draw().unwrap();
+
+  let series = points.map(|point| Circle::new(point, 1, &BLACK));
+
+  ctx.draw_series(series).unwrap();
 
 
 
-fn main() -> Result<(), StrError> {
-    let xs: Vec<i64> = (1..=5000000).collect();
-    //let ys:Vec<_> = xs.iter().map(collatz_length).collect();
-    let start = Instant::now();
-    let ys: Vec<_> = xs.par_iter().map(|&n| collatz_length_brian(n)).collect();
-    let duration = start.elapsed();
-    println!("Time elapsed to get ys is: {:?}", duration);
-
-
-
-    let mut curve = Curve::new();
-    curve
-        .set_label("MatPlotLib Test")
-        //       .set_line_alpha(0.8)
-        //       .set_line_color("#5f9cd8")
-        .set_line_style("None")
-        //       .set_marker_color("#eeea83")
-        .set_marker_every(1)
-        //       .set_marker_line_color("#da98d1")
-        .set_marker_line_width(2.5)
-        .set_marker_size(2.0)
-        .set_marker_style("o");
-
-    curve.draw(&xs, &ys);
-    let mut plot = Plot::new();
-    plot.add(&curve);
-    plot.grid_and_labels("Starting Integer", "Sequence Length");
-    plot.set_title("Collatz Sequence Length");
-    let _ = plot.show("myplot");
-    Ok(())
 }
