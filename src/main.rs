@@ -12,7 +12,7 @@ fn main()  {
 
   let start = Instant::now();
 
-  let root_area = BitMapBackend::new("myplot.png", (1000, 600))
+  let root_area = BitMapBackend::new("myplot.png", (800, 600))
     .into_drawing_area();
 
   root_area.fill(&WHITE).unwrap();
@@ -21,7 +21,7 @@ fn main()  {
     .set_label_area_size(LabelAreaPosition::Left, 40)
     .set_label_area_size(LabelAreaPosition::Bottom, 40)
     .caption("Plotters Rust", ("sans-serif", 40))
-    .build_cartesian_2d(1..high, 0..900)
+    .build_cartesian_2d(1..high, 0..1000)
     .unwrap();
 
   ctx.configure_mesh().draw().unwrap();
