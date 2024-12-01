@@ -1,4 +1,2 @@
-![myplot](https://github.com/user-attachments/assets/c905e5bb-8823-4978-97b1-7304ec8459ce)
+![myplot](https://github.com/user-attachments/assets/c9e06062-9cef-4e92-a096-c2160b6bef06)
 
-
-<img width="1776" alt="profile" src="https://github.com/user-attachments/assets/72fa444c-f4ac-4a07-bec6-e8e1e3f3b2ea">
